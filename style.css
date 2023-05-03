@@ -1,0 +1,80 @@
+
+@font-face {
+    font-family: Montserrat;
+    src: url(Montserrat/static/Montserrat-Medium.ttf);
+  }
+body{
+    font-family: Montserrat ;
+    background-image: url("cloud.jpg");
+    color: white;
+}
+
+#containersearchandlocation{
+    display: flex;
+}
+
+#containersearch{
+    color: white;
+    margin-top: 8%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 30%;
+    text-align: center;
+   
+}
+
+#search{
+    padding: 10px;
+    cursor: pointer;
+    background-color: rgba(165, 163, 230,0.3);
+    border-style: none;
+    font-size: medium;
+    color: white;
+    
+}
+
+label{
+    font-size:large;
+}
+
+#location{
+    background-color: transparent;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid white;
+}
+
+input, select, textarea{
+    color: white;
+}
+
+#declarelocation{
+    padding: 1rem;
+    margin-top: 5%;
+    font-size: larger;
+}
+
+#displayweather{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding-top: 1rem;
+}
+
+.tempcontainer{
+    padding: 2rem;
+    font-size: large;
+}
+
+#containerweatherimg{
+    padding: 1rem;
+    margin-top: 1rem;
+    text-align: center;
+    font-size: larger;
+}
+
+img{
+    width: 150px;
+    color: white;
+}
