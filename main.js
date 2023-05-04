@@ -6,9 +6,19 @@ function getlocation(){
     return location
 }
 
-document.getElementById("search").addEventListener("click", function(){getweather()})
+function clearPage(){
+    document.getElementById("locationdescription").replaceChildren()
+    document.getElementById("containerweatherimg").replaceChildren()
+    document.getElementById("weatherinfocontainer").replaceChildren()
+}
+
+document.getElementById("search").addEventListener("click", function(){
+    clearPage()
+    getweather()
+})
 document.getElementById("location").addEventListener("keypress", function(){
     if (event.key == "Enter"){
+        clearPage()
         getweather()}
     })
 
@@ -24,11 +34,16 @@ async function getweather(){
     console.log(weatherData);
 
     //state where the location is 
-    writeLocation(location)
+    const cityfromapi = weatherData.location.name
+    const country = weatherData.location.country
+    const localtime = weatherData.location.localtime
+    writecity(cityfromapi)
+    writeLocation(country)
+    writeLocation(localtime)
 
     //get temperature in celsius and fahrenheit for the location
-    const tempc = weatherData.current.temp_c;
-    const tempf = weatherData.current.temp_f;
+    const tempc = weatherData.current.temp_c + "°C";
+    const tempf = weatherData.current.temp_f + "°F";
     console.log(tempc, tempf)
     writeTempC(tempc)
     writeTempF(tempf)
@@ -43,20 +58,56 @@ async function getweather(){
 }
 
 function writeTempC(temp){
-    document.getElementById("containertempc").textContent = temp + "°C"
+    console.log(temp)
+    let tempctext = document.createTextNode(temp)
+    let tempcdiv = document.createElement('div')
+    tempcdiv.appendChild(tempctext)
+    document.getElementById("weatherinfocontainer").appendChild(tempcdiv)
 }
 
 function writeTempF(temp){
-    document.getElementById("containertempf").textContent = temp + "°F"
+    let tempftext = document.createTextNode(temp)
+    let tempfdiv = document.createElement('div')
+    tempfdiv.appendChild(tempftext)
+    document.getElementById("weatherinfocontainer").appendChild(tempfdiv)
 }
 
 function writeCondition(condition){
-    document.getElementById("containerweatherimg").textContent = condition;
+    let conditiondiv = document.createElement("div")
+    let conditiontext = document.createTextNode(condition)
+    conditiondiv.id = "conditiondiv"
+    conditiondiv.appendChild(conditiontext)
+    document.getElementById("weatherinfocontainer").appendChild(conditiondiv)
+
     let img = document.createElement("img")
-    img.src = "sunny-day.png"
+    let conditionlower = condition.toLowerCase()
+    if (conditionlower.includes("sunny")){
+        img.src = "sunny-day.png"
+    }else if (conditionlower.includes("cloudy")){
+        img.src = "cloudy.png"
+    }else if (conditionlower.includes("rain") || conditionlower.includes("shower")){
+        img.src = "rainy-day.png"
+    }else if(conditionlower.includes("snow")){
+        img.src = "snow.png"
+    }else if (conditionlower.includes("wind")){
+        img.src = "wind.png"
+    }
+    
+    
     document.getElementById("containerweatherimg").appendChild(img)
 }
 
-function writeLocation(location){
-    document.getElementById("declarelocation"). textContent = "Current weather in " + location
+function writeLocation(info){
+    let infodiv = document.createElement('div')
+    let infotext = document.createTextNode(info)
+    infodiv.appendChild(infotext)
+    document.getElementById("locationdescription").appendChild(infodiv)
+}
+
+function writecity(info){
+    let citydiv = document.createElement('div')
+    let citytext = document.createTextNode(info)
+    citydiv.id = "city"
+    citydiv.appendChild(citytext)
+    document.getElementById("locationdescription").appendChild(citydiv)
 }
