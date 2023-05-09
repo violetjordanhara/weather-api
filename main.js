@@ -60,15 +60,17 @@ async function getweather(){
     const feelslike = "Feels like " + weatherData.current.feelslike_c + "°C/ " + weatherData.current.feelslike_f + "°F"
     const windspeed = "Wind speed " + weatherData.current.wind_mph + "mph"
 
-    writeAdditionalInfo(humidity)
-    writeAdditionalInfo(feelslike)
-    writeAdditionalInfo(windspeed)
+    writeAdditionalInfoHumidity(humidity)
+    writeAdditionalInfoFeels(feelslike)
+    writeAdditionalInfoWind(windspeed)
     
 
     }catch(err){
         console.log(err)
     }
 }
+
+//write temperatures on the DOM 
 
 function writeTempC(temp){
     console.log(temp)
@@ -92,18 +94,19 @@ function writeCondition(condition){
     conditiondiv.appendChild(conditiontext)
     document.getElementById("weatherinfocontainer").appendChild(conditiondiv)
 
+    //generate icons depending on the weather conditions
     let img = document.createElement("img")
     let conditionlower = condition.toLowerCase()
     if (conditionlower.includes("sunny")){
-        img.src = "sunny-day.png"
+        img.src = "pictures/sunny-day.png"
     }else if (conditionlower.includes("cloudy")){
-        img.src = "cloudy.png"
+        img.src = "pictures/cloudy.png"
     }else if (conditionlower.includes("rain") || conditionlower.includes("shower")){
-        img.src = "rainy-day.png"
+        img.src = "pictures/rainy-day.png"
     }else if(conditionlower.includes("snow")){
-        img.src = "snow.png"
+        img.src = "pictures/snow.png"
     }else if (conditionlower.includes("wind")){
-        img.src = "wind.png"
+        img.src = "pictures/wind.png"
     }
     
     
@@ -125,10 +128,38 @@ function writecity(info){
     document.getElementById("locationdescription").appendChild(citydiv)
 }
 
-function writeAdditionalInfo(info){
-
+function writeAdditionalInfoHumidity(info){
+    let humidityimg = document.createElement('img');
+    humidityimg.src = "pictures/humidity.png"
+    humidityimg.classList.add("smallericon");
+    humidityimg.classList.add("invert");
     let addinfodiv = document.createElement("div");
     let addinfotext = document.createTextNode(info);
+    addinfodiv.appendChild(humidityimg)
+    addinfodiv.appendChild(addinfotext);
+    document.getElementById("containeradditionalinfo").appendChild(addinfodiv)
+}
+
+function writeAdditionalInfoFeels(info){
+    let feelsimg = document.createElement('img');
+    feelsimg.src = "pictures/thermometer.png"
+    feelsimg.classList.add("smallericon");
+    feelsimg.classList.add("invert");
+    let addinfodiv = document.createElement("div");
+    let addinfotext = document.createTextNode(info);
+    addinfodiv.appendChild(feelsimg);
+    addinfodiv.appendChild(addinfotext);
+    document.getElementById("containeradditionalinfo").appendChild(addinfodiv)
+}
+
+function writeAdditionalInfoWind(info){
+    let windimg = document.createElement('img');
+    windimg.src = "pictures/wind.png"
+    windimg.classList.add("smallericon");
+    windimg.classList.add("invert");
+    let addinfodiv = document.createElement("div");
+    let addinfotext = document.createTextNode(info);
+    addinfodiv.appendChild(windimg);
     addinfodiv.appendChild(addinfotext);
     document.getElementById("containeradditionalinfo").appendChild(addinfodiv)
 }

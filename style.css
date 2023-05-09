@@ -5,7 +5,7 @@
   }
 body{
     font-family: Montserrat ;
-    background-image: url("cloud.jpg");
+    background-image: url("pictures/cloud.jpg");
     color: white;
 }
 
@@ -32,6 +32,9 @@ body{
     color: white;
 }
 
+.smallericon{
+    width: 1.5rem;
+}
 label{
     font-size:large;
 }
@@ -55,7 +58,6 @@ input, select, textarea{
     gap: 0.5rem;
     width: min-content;
     top: 2rem;
-
 
 }
 

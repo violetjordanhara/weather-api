@@ -1,6 +1,6 @@
 # weather-api
-**Project description**
-(![Alt text](weatherapi.png?raw=true "Weatherapi"))
+**Project description** <br />
+(![Alt text](pictures/weatherapiscreencap.png?raw=true "Weatherapi"))
 
 Weather-api is a one-page web app that tells users the current weather based on location entered.
 
@@ -14,7 +14,7 @@ More information about humidity and windspeed is available in the bottom right c
 
 In completing this project, I practised using a JSON restful API. I would like to use Weather API's astronomy data in the next update of this project.
 
-**How to install and run the project.**
+**How to install and run the project.** <br />
 
 To run this project on your local browser, download the files from the respository. Then start the index.html file in your local browser. 
 
