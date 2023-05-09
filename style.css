@@ -14,10 +14,9 @@ body{
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    width: 30%;
-    text-align: center;
-    position: fixed;
-    top: 20rem;
+    width: min-content;
+    padding: 1rem;
+    padding-left: 30px;
 }
 
 .invert{
@@ -48,41 +47,32 @@ input, select, textarea{
     color: white;
 }
 
-#locationdescription{
-    display: flex;
-    flex-direction: column;
+.containerposition{
+    display: grid;
     padding: 1rem;
+    padding-left: 30px;
     color: white;
     gap: 0.5rem;
-    width: 30%;
-    position: fixed;
+    width: min-content;
     top: 2rem;
-    text-align: center;
+
+
 }
 
 #city{
     font-weight: bolder;
     font-size: xxx-large;
     letter-spacing: 8px;
-}
-
-#displayweather{
-    position: fixed;
-    top: 10rem;
-    padding-left: 1.5rem;
-    
+    width: min-content;
 }
 
 
 
 #containerweatherimg{
-    padding: 2rem;
     gap: 1rem;
-    width: 30%;
-    position: fixed;
-    top: 10rem;
+    padding-left: 30px;
+    width: min-content;
     text-align: center;
-    display: flex;
 }
 
 
@@ -91,16 +81,18 @@ img{
     
 }
 
+#additionalInfoIcon{
+    width: 10px;
+}
+
 #conditiondiv{
     font-size: large;
     text-decoration-color: white;
+
 }
 
-#weatherinfocontainer{
-    display: flex;
-    flex-direction: column;
-    position: fixed;
-    top: 12rem;
-    width: 30%;
-    text-align: center;
+#containeradditionalinfo{
+    float: right;
+    padding-right: 10px;
+    line-height: 30px;
 }

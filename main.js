@@ -10,6 +10,7 @@ function clearPage(){
     document.getElementById("locationdescription").replaceChildren()
     document.getElementById("containerweatherimg").replaceChildren()
     document.getElementById("weatherinfocontainer").replaceChildren()
+    document.getElementById("containeradditionalinfo").replaceChildren()
 }
 
 document.getElementById("search").addEventListener("click", function(){
@@ -22,6 +23,8 @@ document.getElementById("location").addEventListener("keypress", function(){
         getweather()}
     })
 
+
+
 async function getweather(){
     try{
     //get location from getlocation()
@@ -29,7 +32,7 @@ async function getweather(){
     console.log(`Getting weather information about ${location}`);
 
     //get info from weatherapi
-    const response = await fetch('https://api.weatherapi.com/v1/current.json?key=cb03200639024d27934194741230105&q=' + `${location}`, {mode: 'cors'});
+    const response = await fetch('https://api.weatherapi.com/v1/current.json?key=230926e770004906a25141307230405&q=' + `${location}`, {dataType: 'jsonp'}, {mode: 'cors'});
     const weatherData = await response.json();
     console.log(weatherData);
 
@@ -51,6 +54,16 @@ async function getweather(){
     //provides a clear icon depending on if it's sunny, cloudy, rainy or snowing
     const condition = weatherData.current.condition.text
     writeCondition(condition)
+
+    //get info on humidity, wind speed, feelslike
+    const humidity = "Humidity " + weatherData.current.humidity + "%";
+    const feelslike = "Feels like " + weatherData.current.feelslike_c + "°C/ " + weatherData.current.feelslike_f + "°F"
+    const windspeed = "Wind speed " + weatherData.current.wind_mph + "mph"
+
+    writeAdditionalInfo(humidity)
+    writeAdditionalInfo(feelslike)
+    writeAdditionalInfo(windspeed)
+    
 
     }catch(err){
         console.log(err)
@@ -110,4 +123,12 @@ function writecity(info){
     citydiv.id = "city"
     citydiv.appendChild(citytext)
     document.getElementById("locationdescription").appendChild(citydiv)
+}
+
+function writeAdditionalInfo(info){
+
+    let addinfodiv = document.createElement("div");
+    let addinfotext = document.createTextNode(info);
+    addinfodiv.appendChild(addinfotext);
+    document.getElementById("containeradditionalinfo").appendChild(addinfodiv)
 }
