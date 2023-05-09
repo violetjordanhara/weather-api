@@ -1,5 +1,7 @@
 # weather-api
 **Project description**
+(![Alt text](weatherapi.png?raw=true "Weatherapi"))
+
 Weather-api is a one-page web app that tells users the current weather based on location entered.
 
 I built this to integrate the Weather API (https://www.weatherapi.com/docs/) and display weather information in a neat, minimalist and accessible single page. 
