@@ -1,5 +1,7 @@
 # Weather forecast app
-## Project description 
+
+## Project description
+
 Search a location for forecast data.<br>
 
 - Display hourly forecast data for a given location.<br>
@@ -7,10 +9,13 @@ Search a location for forecast data.<br>
 - Unique weather symbols for each forecast description.<br>
 
 Feature ideas to implement.<br>
+
 - Display user location by default.
 
 ## Live preview
 
+![alt text](https://github.com/violetjordanhara/weather-api/blob/main/pictures/weatherapiscreencap.png "weather project preview")
+[Link to live demo](https://violetjordanhara.github.io/weather-api)
 
 ## How to install and run the project.
 
